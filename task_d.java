@@ -116,21 +116,21 @@ public class task_d{
 	}
 
 	public static void main(String[] args) throws Exception {
-      JobConf conf = new JobConf(task_d.class);
-      conf.setJobName("task_d");
-
-      conf.setOutputKeyClass(IntWritable.class);
-      conf.setOutputValueClass(Text.class);
-
-      conf.setReducerClass(Reduce.class);
-
-      conf.setInputFormat(TextInputFormat.class);
-      conf.setOutputFormat(TextOutputFormat.class);
+	      JobConf conf = new JobConf(task_d.class);
+	      conf.setJobName("task_d");
 	
-      MultipleInputs.addInputPath(conf, new Path(args[0]), TextInputFormat.class, my_pageMap.class);
-      MultipleInputs.addInputPath(conf, new Path(args[1]), TextInputFormat.class, friend_pageMap.class);
-      FileOutputFormat.setOutputPath(conf, new Path(args[2]));
-
-      JobClient.runJob(conf);
-    }
+	      conf.setOutputKeyClass(IntWritable.class);
+	      conf.setOutputValueClass(Text.class);
+	
+	      conf.setReducerClass(Reduce.class);
+	
+	      conf.setInputFormat(TextInputFormat.class);
+	      conf.setOutputFormat(TextOutputFormat.class);
+		
+	      MultipleInputs.addInputPath(conf, new Path(args[0]), TextInputFormat.class, my_pageMap.class);
+	      MultipleInputs.addInputPath(conf, new Path(args[1]), TextInputFormat.class, friend_pageMap.class);
+	      FileOutputFormat.setOutputPath(conf, new Path(args[2]));
+	
+	      JobClient.runJob(conf);
+    	}
 }
